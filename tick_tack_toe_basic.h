@@ -3,53 +3,56 @@
 #include <stdlib.h>
 
 
-//½«ÆåÅÌÉÏ¸ñ×ÓµÄÈıÖÖÇé¿öÓ³Éä³ÉÊı×Ö£¬²¢ÓÃ´´½¨Ò»¸öÏàÓ¦µÄ×Ô¶¨ÒåĞÍ
+//å°†æ£‹ç›˜ä¸Šæ ¼å­çš„ä¸‰ç§æƒ…å†µæ˜ å°„æˆæ•°å­—ï¼Œå¹¶ç”¨åˆ›å»ºä¸€ä¸ªç›¸åº”çš„è‡ªå®šä¹‰å‹
 typedef enum {T3N, T3X, T3O} TICK_TACK_TOE;
 
-//³õÊ¼»¯Æå¾ÖµÄÊı×é
+//åˆå§‹åŒ–æ£‹å±€çš„æ•°ç»„
 void initialization(TICK_TACK_TOE tick_tack_toe_phase[][3]);
 
-//½«Æå¾Ö´òÓ¡µ½ÆÁÄ»ÉÏµÄº¯Êı
+//å°†æ£‹å±€æ‰“å°åˆ°å±å¹•ä¸Šçš„å‡½æ•°
 void output_tick_tack_toe_phase(TICK_TACK_TOE tick_tack_toe_phase[][3]);
 
-//ÅĞ¶ÏÆå¾ÖÊÇ·ñÔÚ´Ë²½ÖÕ½á²¢¾ö³öÊ¤Àû·½µÄº¯Êı
+//åˆ¤æ–­æ£‹å±€æ˜¯å¦åœ¨æ­¤æ­¥ç»ˆç»“å¹¶å†³å‡ºèƒœåˆ©æ–¹çš„å‡½æ•°
 int judge_win(TICK_TACK_TOE tick_tack_toe_phase[][3]);
 
-//ÊµÏÖÍæ¼ÒÒÆ¶¯Æå×ÓµÄº¯Êı
+//å®ç°ç©å®¶ç§»åŠ¨æ£‹å­çš„å‡½æ•°
 void receive_judge_move(TICK_TACK_TOE tick_tack_toe_phase[][3]);
 
-//ÊµÏÖ¼ÆËã»úµÍ¼¶ÒÆ¶¯Æå×Ó
+//å®ç°è®¡ç®—æœºä½çº§ç§»åŠ¨æ£‹å­
 void computer_low_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3]);
 
-//ÊµÏÖÖÕÖ¹ÓÎÏ·ÃüÁîµÄ»ñÈ¡¼°ÑéÖ¤
+//å®ç°ç»ˆæ­¢æ¸¸æˆå‘½ä»¤çš„è·å–åŠéªŒè¯
 int judge_player_order_end(void);
 
-//ÊµÏÖ¼ÆËã»úÖĞ¼¶ÒÆ¶¯Æå×Ó£¨³õ²½·ÀÊØÓë³õ²½½ø¹¥£©
+//å®ç°è®¡ç®—æœºä¸­çº§ç§»åŠ¨æ£‹å­ï¼ˆåˆæ­¥é˜²å®ˆä¸åˆæ­¥è¿›æ”»ï¼‰
 void computer_middle_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3]);
 
-//ÊµÏÖ¼ÆËã»ú¸ß¼¶ÒÆ¶¯Æå×Ó£¨½ø½×·ÀÊØÓë½ø½×½ø¹¥£©
+//å®ç°è®¡ç®—æœºé«˜çº§ç§»åŠ¨æ£‹å­ï¼ˆè¿›é˜¶é˜²å®ˆä¸è¿›é˜¶è¿›æ”»ï¼‰
 void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3]);
 
-//»ñÈ¡Íæ¼ÒÑ¡ÔñµÄÓÎÏ·ÄÑ¶È
+//è·å–ç©å®¶é€‰æ‹©çš„æ¸¸æˆéš¾åº¦
 char get_difficulty_level(void);
 
 
 
 
-//ÒÔÏÂº¯Êı²»Ó¦ÔÚÖ÷º¯ÊıÖĞ±»µ÷ÓÃ
-//ÒÔÏÂº¯Êı²»Ó¦ÔÚÖ÷º¯ÊıÖĞ±»µ÷ÓÃ
+//ä»¥ä¸‹å‡½æ•°ä¸åº”åœ¨ä¸»å‡½æ•°ä¸­è¢«è°ƒç”¨
+//ä»¥ä¸‹å‡½æ•°ä¸åº”åœ¨ä¸»å‡½æ•°ä¸­è¢«è°ƒç”¨
 
-//½»»»ÆåÅÌÖĞÖ¸¶¨Î»ÖÃµÄÆå×Ó
+//äº¤æ¢æ£‹ç›˜ä¸­æŒ‡å®šä½ç½®çš„æ£‹å­
 void exchange_tick_tack_toe_phase(TICK_TACK_TOE tick_tack_toe_phase[][3], TICK_TACK_TOE y, TICK_TACK_TOE x, TICK_TACK_TOE yy, TICK_TACK_TOE xx);
 
-//ÅĞ¶ÏĞĞ¶¯ÊÇ·ñ»á²úÉúÆÆÕÀ²¢³·Ïú²úÉúÆÆÕÀµÄ½»»»µÄº¯Êı
+//åˆ¤æ–­è¡ŒåŠ¨æ˜¯å¦ä¼šäº§ç”Ÿç ´ç»½å¹¶æ’¤é”€äº§ç”Ÿç ´ç»½çš„äº¤æ¢çš„å‡½æ•°
 int judge_cause_flaw(TICK_TACK_TOE tick_tack_toe_phase[][3], TICK_TACK_TOE player_piece_place_y[], TICK_TACK_TOE player_piece_place_x[], TICK_TACK_TOE judge_piece_place_y, TICK_TACK_TOE judge_piece_place_x);
 
-//ÓÃÓÚÅĞ¶ÏÊÇ·ñÊÇ±ØÊ¤Æå¾ÖµÄº¯Êı
+//ç”¨äºåˆ¤æ–­æ˜¯å¦æ˜¯å¿…èƒœæ£‹å±€çš„å‡½æ•°
 int judge_cause_win_a_side(TICK_TACK_TOE tick_tack_toe_phase[][3], TICK_TACK_TOE a, TICK_TACK_TOE b);
 
-//ÓÃÓÚĞı×ªÆå¾Ö
+//ç”¨äºæ—‹è½¬æ£‹å±€
 void retate_anticlockwise_phase(TICK_TACK_TOE tick_tack_toe_phase[][3]);
 
-//ÓÃÓÚ·­×ªÆå¾Ö
+//ç”¨äºç¿»è½¬æ£‹å±€
 void flip_upside_down_phase(TICK_TACK_TOE tick_tack_toe_phase[][3]);
+
+//ç”¨äºè¿”å›æ£‹å±€æƒ…å†µçš„å‡½æ•°
+int judge_win_a_side(TICK_TACK_TOE tick_tack_toe_phase[][3], int k, TICK_TACK_TOE a, TICK_TACK_TOE b);
