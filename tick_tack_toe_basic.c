@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "tick_tack_toe_basic.h"
 
-//³õÊ¼»¯Æå¾ÖµÄÊı×é
+//åˆå§‹åŒ–æ£‹å±€çš„æ•°ç»„
 void initialization(TICK_TACK_TOE tick_tack_toe_phase[][3])
 {
     tick_tack_toe_phase[0][0] = tick_tack_toe_phase[0][2] = tick_tack_toe_phase[2][1] = 1;
@@ -11,16 +11,16 @@ void initialization(TICK_TACK_TOE tick_tack_toe_phase[][3])
     tick_tack_toe_phase[1][0] = tick_tack_toe_phase[1][1] = tick_tack_toe_phase[1][2] = 0;
 }
 
-//½«Æå¾Ö´òÓ¡µ½ÆÁÄ»ÉÏµÄº¯Êı
+//å°†æ£‹å±€æ‰“å°åˆ°å±å¹•ä¸Šçš„å‡½æ•°
 void output_tick_tack_toe_phase(TICK_TACK_TOE tick_tack_toe_phase[][3])
 {
     int m, i;
 
-    printf("     1   2   3 \n");                          //ºá×ø±ê´òÓ¡
+    printf("     1   2   3 \n");                          //æ¨ªåæ ‡æ‰“å°
     printf("    --- --- ---\n");
     for (m = 0; m < 3; m++)
         {
-            switch (m)                                    //×İ×ø±ê´òÓ¡
+            switch (m)                                    //çºµåæ ‡æ‰“å°
             {
                 case 0: printf(" A |");
                         break;
@@ -31,7 +31,7 @@ void output_tick_tack_toe_phase(TICK_TACK_TOE tick_tack_toe_phase[][3])
             }
 
             for (i = 0; i < 3; i++)
-                switch (tick_tack_toe_phase[m][i])        //´òÓ¡Æå×Ó
+                switch (tick_tack_toe_phase[m][i])        //æ‰“å°æ£‹å­
                 {
                     case 0: printf(" - |");
                             break;
@@ -48,7 +48,7 @@ void output_tick_tack_toe_phase(TICK_TACK_TOE tick_tack_toe_phase[][3])
     return;
 }
 
-//ÅĞ¶ÏÆå¾ÖÊÇ·ñÔÚ´Ë²½ÖÕ½á²¢¾ö³öÊ¤Àû·½µÄº¯Êı
+//åˆ¤æ–­æ£‹å±€æ˜¯å¦åœ¨æ­¤æ­¥ç»ˆç»“å¹¶å†³å‡ºèƒœåˆ©æ–¹çš„å‡½æ•°
 int judge_win(TICK_TACK_TOE tick_tack_toe_phase[][3])
 {
     int row[3], col[3], diag[2];
@@ -61,15 +61,15 @@ int judge_win(TICK_TACK_TOE tick_tack_toe_phase[][3])
     diag[0] = tick_tack_toe_phase[0][0] * tick_tack_toe_phase[1][1] * tick_tack_toe_phase[2][2];
     diag[1] = tick_tack_toe_phase[0][2] * tick_tack_toe_phase[1][1] * tick_tack_toe_phase[2][0];
 
-    if (row[0] == 1 || row[1] == 1 || row[2] == 1 || col[0] == 1 || col[1] == 1 || col[2] == 1 || diag[0] == 1 || diag[1] == 1)    //ÅĞ¶ÏX·½ÊÇ·ñ»ñÊ¤
-        return 1;                                //·µ»ØÖµÓÃÓÚÏÂÒ»¾ÖÓÎÏ·ÏÈÊÖ½»»»
-    else if (row[0] == 8 || row[1] == 8 || row[2] == 8 || col[0] == 8 || col[1] == 8 || col[2] == 8 || diag[0] == 8 || diag[1] == 8)  //ÅĞ¶ÏO·½ÊÇ·ñ»ñÊ¤
-        return 2;                                   //·µ»ØÖµÓÃÓÚÏÂÒ»¾ÖÓÎÏ·ÏÈÊÖ½»»»
-    else                        //X·½ºÍO·½¾ùÎ´»ñÊ¤£¬ÓÎÏ·Î´½áÊø
+    if (row[0] == 1 || row[1] == 1 || row[2] == 1 || col[0] == 1 || col[1] == 1 || col[2] == 1 || diag[0] == 1 || diag[1] == 1)    //åˆ¤æ–­Xæ–¹æ˜¯å¦è·èƒœ
+        return 1;                                //è¿”å›å€¼ç”¨äºä¸‹ä¸€å±€æ¸¸æˆå…ˆæ‰‹äº¤æ¢
+    else if (row[0] == 8 || row[1] == 8 || row[2] == 8 || col[0] == 8 || col[1] == 8 || col[2] == 8 || diag[0] == 8 || diag[1] == 8)  //åˆ¤æ–­Oæ–¹æ˜¯å¦è·èƒœ
+        return 2;                                   //è¿”å›å€¼ç”¨äºä¸‹ä¸€å±€æ¸¸æˆå…ˆæ‰‹äº¤æ¢
+    else                        //Xæ–¹å’ŒOæ–¹å‡æœªè·èƒœï¼Œæ¸¸æˆæœªç»“æŸ
         return 0;
 }
 
-//ÊµÏÖÍæ¼ÒÒÆ¶¯Æå×ÓµÄº¯Êı
+//å®ç°ç©å®¶ç§»åŠ¨æ£‹å­çš„å‡½æ•°
 void receive_judge_move(TICK_TACK_TOE tick_tack_toe_phase[][3])
 {
     int i = -1;
@@ -80,18 +80,18 @@ void receive_judge_move(TICK_TACK_TOE tick_tack_toe_phase[][3])
     char order_select_piece[2];
 
     printf("Please select the piece you want to move. Your order must be in certain format like A2 or A2CCD (both mean A2).\n");
-    while ((i == -1) || (m != 2))      //»ñÈ¡ÒÆ¶¯Æå×ÓµÄÃüÁî²¢¼ì²âÆäºÏ·¨ĞÔ
+    while ((i == -1) || (m != 2))      //è·å–ç§»åŠ¨æ£‹å­çš„å‘½ä»¤å¹¶æ£€æµ‹å…¶åˆæ³•æ€§
     {
         scanf("%s", order_select_piece);
-        if (((order_select_piece[0] == 'A') || (order_select_piece[0] == 'B') || (order_select_piece[0] == 'C')) && ((order_select_piece[1] == '1') || (order_select_piece[1] == '2') || (order_select_piece[1] == '3')))  //ÓÃÓÚÅĞ¶ÏÍæ¼ÒÃüÁîÊÇ·ñºÏ·¨
+        if (((order_select_piece[0] == 'A') || (order_select_piece[0] == 'B') || (order_select_piece[0] == 'C')) && ((order_select_piece[1] == '1') || (order_select_piece[1] == '2') || (order_select_piece[1] == '3')))  //ç”¨äºåˆ¤æ–­ç©å®¶å‘½ä»¤æ˜¯å¦åˆæ³•
             i = 1;
         else
             i = -1;
-        if (i == -1)                  //Íæ¼ÒÊäÈë´íÎóÄÚÈİÊ±µÄ·´À¡
+        if (i == -1)                  //ç©å®¶è¾“å…¥é”™è¯¯å†…å®¹æ—¶çš„åé¦ˆ
             printf("What you input is not in a right format or beyond chessboard. Please enter your order again.\n");
         else
             {
-                array_receive_judge_move_from[0] = (int) (order_select_piece[0] - 'A');          //ÓÃÓÚ¼ÇÂ¼Íæ¼ÒµÄÃüÁî
+                array_receive_judge_move_from[0] = (int) (order_select_piece[0] - 'A');          //ç”¨äºè®°å½•ç©å®¶çš„å‘½ä»¤
                 array_receive_judge_move_from[1] = (int) (order_select_piece[1] - '1');
                 m = tick_tack_toe_phase[array_receive_judge_move_from[0]][array_receive_judge_move_from[1]];
                 if (m == 0)
@@ -100,28 +100,28 @@ void receive_judge_move(TICK_TACK_TOE tick_tack_toe_phase[][3])
                     printf("What you want to move is a piece belonging to the computer. Please input your order again.\n");
             }
     }
-    i = -1;        //³õÊ¼»¯ÅĞ¶ÏÓÃ²ÎÊı
+    i = -1;        //åˆå§‹åŒ–åˆ¤æ–­ç”¨å‚æ•°
     m = 0;
     printf("Please select the place you want to move to. Your order must be in certain format like A2 or A2CCD (both mean A2).\n");
-    while ((i == -1) || (m != 0))         //»ñÈ¡Íæ¼ÒÒÆ¶¯Æå×Óµ½Ä³´¦µÄÃüÁî²¢¼ì²âÆäºÏ·¨ĞÔ
+    while ((i == -1) || (m != 0))         //è·å–ç©å®¶ç§»åŠ¨æ£‹å­åˆ°æŸå¤„çš„å‘½ä»¤å¹¶æ£€æµ‹å…¶åˆæ³•æ€§
     {
         scanf("%s", order_select_piece);
-        if (((order_select_piece[0] == 'A') || (order_select_piece[0] == 'B') || (order_select_piece[0] == 'C')) && ((order_select_piece[1] == '1') || (order_select_piece[1] == '2') || (order_select_piece[1] == '3')))  //ÓÃÓÚÅĞ¶ÏÍæ¼ÒÃüÁîÊÇ·ñºÏ·¨
+        if (((order_select_piece[0] == 'A') || (order_select_piece[0] == 'B') || (order_select_piece[0] == 'C')) && ((order_select_piece[1] == '1') || (order_select_piece[1] == '2') || (order_select_piece[1] == '3')))  //ç”¨äºåˆ¤æ–­ç©å®¶å‘½ä»¤æ˜¯å¦åˆæ³•
             i = 1;
         else
             i = -1;
-        if (i == -1)             //Íæ¼ÒÊäÈëÄÚÈİ²»ºÏ·¨Ê±µÄ·´À¡
+        if (i == -1)             //ç©å®¶è¾“å…¥å†…å®¹ä¸åˆæ³•æ—¶çš„åé¦ˆ
             printf("What you input is not in a right format or beyond chessboard. Please enter your order again.\n");
         else
         {
-            array_receive_judge_move_to[0] = (int) (order_select_piece[0] - 'A');          //ÓÃÓÚ¼ÇÂ¼Íæ¼ÒµÄÃüÁî
+            array_receive_judge_move_to[0] = (int) (order_select_piece[0] - 'A');          //ç”¨äºè®°å½•ç©å®¶çš„å‘½ä»¤
             array_receive_judge_move_to[1] = (int) (order_select_piece[1] - '1');
             m = tick_tack_toe_phase[array_receive_judge_move_to[0]][array_receive_judge_move_to[1]];
             if (m == 0)
             {
                 x = array_receive_judge_move_to[0] - array_receive_judge_move_from[0];
                 y = array_receive_judge_move_to[1] - array_receive_judge_move_from[1];
-                if (!((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //ÅĞ¶ÏÍæ¼ÒÑ¡ÔñÒÆ¶¯µ½µÄÎ»ÖÃÊÇ·ñºÏ·¨
+                if (!((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //åˆ¤æ–­ç©å®¶é€‰æ‹©ç§»åŠ¨åˆ°çš„ä½ç½®æ˜¯å¦åˆæ³•
                 {
                     i = -1;
                     printf("Your piece can't get to that place. Please enter your order again.\n");
@@ -131,22 +131,22 @@ void receive_judge_move(TICK_TACK_TOE tick_tack_toe_phase[][3])
                 printf("Another piece is at where you want to move your piece to. Please enter your order again.\n");
         }
     }
-    while (getchar() != '\n')              //ÏûºÄ»»ĞĞ·û£¬·ÀÖ¹Æä¸ÉÈÅÖ÷º¯ÊıÖĞÈÎºÎÆäËûĞèÒª»ñÈ¡ÊäÈëµÄÃüÁî
+    while (getchar() != '\n')              //æ¶ˆè€—æ¢è¡Œç¬¦ï¼Œé˜²æ­¢å…¶å¹²æ‰°ä¸»å‡½æ•°ä¸­ä»»ä½•å…¶ä»–éœ€è¦è·å–è¾“å…¥çš„å‘½ä»¤
         continue;
-    temp = tick_tack_toe_phase[array_receive_judge_move_to[0]][array_receive_judge_move_to[1]];        //½»»»Æå¾ÖÊı×éµÄÔªËØµÄÖµ£¬´Ó¶øÊµÏÖÆå×ÓÒÆ¶¯
+    temp = tick_tack_toe_phase[array_receive_judge_move_to[0]][array_receive_judge_move_to[1]];        //äº¤æ¢æ£‹å±€æ•°ç»„çš„å…ƒç´ çš„å€¼ï¼Œä»è€Œå®ç°æ£‹å­ç§»åŠ¨
     tick_tack_toe_phase[array_receive_judge_move_to[0]][array_receive_judge_move_to[1]] = tick_tack_toe_phase[array_receive_judge_move_from[0]][array_receive_judge_move_from[1]];
     tick_tack_toe_phase[array_receive_judge_move_from[0]][array_receive_judge_move_from[1]] = temp;
 
     return;
 }
 
-//ÊµÏÖ¼ÆËã»úµÍ¼¶ÒÆ¶¯Æå×Ó
+//å®ç°è®¡ç®—æœºä½çº§ç§»åŠ¨æ£‹å­
 void computer_low_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
 {
     int computer_move_from_y[3];
-    int computer_move_from_x[3];   //ÁªºÏÁ½¸öÊı×éÓÃÓÚ¼ÇÂ¼¼ÆËã»úµÄÆå×ÓµÄÎ»ÖÃ
+    int computer_move_from_x[3];   //è”åˆä¸¤ä¸ªæ•°ç»„ç”¨äºè®°å½•è®¡ç®—æœºçš„æ£‹å­çš„ä½ç½®
     int computer_move_to_y[3];
-    int computer_move_to_x[3];    //ÁªºÏÁ½¸öÊı×éÓÃÓÚ¼ÇÂ¼¼ÆËã»úÆå×Ó¿ÉÒÆ¶¯µÄ¿Õ°×Æå¸ñµÄÎ»ÖÃ
+    int computer_move_to_x[3];    //è”åˆä¸¤ä¸ªæ•°ç»„ç”¨äºè®°å½•è®¡ç®—æœºæ£‹å­å¯ç§»åŠ¨çš„ç©ºç™½æ£‹æ ¼çš„ä½ç½®
     int i, j, k, p;
     int x, y;
     int rand_move_1, rand_move_2;
@@ -156,13 +156,13 @@ void computer_low_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
     {
         for (j = 0; j < 3; j++)
         {
-            if (tick_tack_toe_phase[i][j] == 1)          //¼ÇÂ¼¼ÆËã»úµÄÆå×ÓµÄÎ»ÖÃ
+            if (tick_tack_toe_phase[i][j] == 1)          //è®°å½•è®¡ç®—æœºçš„æ£‹å­çš„ä½ç½®
             {
                 computer_move_from_y[k] = i;
                 computer_move_from_x[k] = j;
                 k++;
             }
-            if (tick_tack_toe_phase[i][j] == 0)          //¼ÇÂ¼¿Õ°×Æå¸ñµÄÎ»ÖÃ
+            if (tick_tack_toe_phase[i][j] == 0)          //è®°å½•ç©ºç™½æ£‹æ ¼çš„ä½ç½®
             {
                 computer_move_to_y[p] = i;
                 computer_move_to_x[p] = j;
@@ -170,9 +170,9 @@ void computer_low_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             }
         }
     }
-    rand_move_1 = rand() % 3;              //ÊµÏÖËæ»ú
+    rand_move_1 = rand() % 3;              //å®ç°éšæœº
     rand_move_2 = rand() % 3;
-    for (i = 0; i < 3; i++)                //ÊµÏÖÒÆ¶¯Æå×Ó
+    for (i = 0; i < 3; i++)                //å®ç°ç§»åŠ¨æ£‹å­
     {
         rand_move_1 = (rand_move_1 + i) % 3;
         for (j = 0; j < 3; j++)
@@ -180,11 +180,11 @@ void computer_low_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_2 = (rand_move_2 + j) % 3;
             y = computer_move_from_y[rand_move_1] - computer_move_to_y[rand_move_2];
             x = computer_move_from_x[rand_move_1] - computer_move_to_x[rand_move_2];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 temp = tick_tack_toe_phase[computer_move_to_y[rand_move_2]][computer_move_to_x[rand_move_2]];
                 tick_tack_toe_phase[computer_move_to_y[rand_move_2]][computer_move_to_x[rand_move_2]] = tick_tack_toe_phase[computer_move_from_y[rand_move_1]][computer_move_from_x[rand_move_1]];
-                tick_tack_toe_phase[computer_move_from_y[rand_move_1]][computer_move_from_x[rand_move_1]] = temp;   //½»»»Æå¾ÖÊı×éµÄÔªËØµÄÖµ£¬´Ó¶øÊµÏÖÆå×ÓÒÆ¶¯
+                tick_tack_toe_phase[computer_move_from_y[rand_move_1]][computer_move_from_x[rand_move_1]] = temp;   //äº¤æ¢æ£‹å±€æ•°ç»„çš„å…ƒç´ çš„å€¼ï¼Œä»è€Œå®ç°æ£‹å­ç§»åŠ¨
                 goto step_one;
             }
         }
@@ -194,27 +194,27 @@ void computer_low_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
     return;
 }
 
-//ÊµÏÖÖÕÖ¹ÓÎÏ·ÃüÁîµÄ»ñÈ¡¼°ÑéÖ¤
+//å®ç°ç»ˆæ­¢æ¸¸æˆå‘½ä»¤çš„è·å–åŠéªŒè¯
 int judge_player_order_end(void)
 {
     char first_char;
     int player_order_end;
 
-    if (((first_char = getchar()) == 'q') || (first_char == 'Q'))    //´¦ÀíÍæ¼ÒÊäÈë¡°Q+.."»ò¡±q+..¡°µÄÇé¿ö
+    if (((first_char = getchar()) == 'q') || (first_char == 'Q'))    //å¤„ç†ç©å®¶è¾“å…¥â€œQ+.."æˆ–â€q+..â€œçš„æƒ…å†µ
     {
         player_order_end = 0;
         if (getchar() != '\n')
         {
-            while (getchar() != '\n')         //ÏûºÄ»»ĞĞ·û£¬·ÀÖ¹¸ÉÈÅÖ÷º¯ÊıÖĞÈÎºÎÆäËûĞèÒª»ñÈ¡ÊäÈëµÄÃüÁî
+            while (getchar() != '\n')         //æ¶ˆè€—æ¢è¡Œç¬¦ï¼Œé˜²æ­¢å¹²æ‰°ä¸»å‡½æ•°ä¸­ä»»ä½•å…¶ä»–éœ€è¦è·å–è¾“å…¥çš„å‘½ä»¤
                 continue;
             player_order_end = 1;
         }
     }
-    else       //´¦ÀíÍæ¼ÒÊäÈëÆäËûÄÚÈİµÄÇé¿ö
+    else       //å¤„ç†ç©å®¶è¾“å…¥å…¶ä»–å†…å®¹çš„æƒ…å†µ
     {
-        if (first_char == '\n')               //´¦ÀíÍæ¼ÒÖ±½ÓÊäÈë»»ĞĞ·ûµÄÇé¿ö
+        if (first_char == '\n')               //å¤„ç†ç©å®¶ç›´æ¥è¾“å…¥æ¢è¡Œç¬¦çš„æƒ…å†µ
             goto step_one;
-        while (getchar() != '\n')             //ÏûºÄ»»ĞĞ·û£¬·ÀÖ¹¸ÉÈÅÖ÷º¯ÊıÖĞÈÎºÎÆäËûĞèÒª»ñÈ¡ÊäÈëµÄÃüÁî
+        while (getchar() != '\n')             //æ¶ˆè€—æ¢è¡Œç¬¦ï¼Œé˜²æ­¢å¹²æ‰°ä¸»å‡½æ•°ä¸­ä»»ä½•å…¶ä»–éœ€è¦è·å–è¾“å…¥çš„å‘½ä»¤
             continue;
         step_one: ;
         player_order_end = 1;
@@ -223,7 +223,7 @@ int judge_player_order_end(void)
     return player_order_end;
 }
 
-//ÊµÏÖ¼ÆËã»úÖĞ¼¶ÒÆ¶¯Æå×Ó£¨³õ²½·ÀÊØÓë³õ²½½ø¹¥£©
+//å®ç°è®¡ç®—æœºä¸­çº§ç§»åŠ¨æ£‹å­ï¼ˆåˆæ­¥é˜²å®ˆä¸åˆæ­¥è¿›æ”»ï¼‰
 void computer_middle_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
 {
     TICK_TACK_TOE computer_piece_place_x[3], computer_piece_place_y[3], player_piece_place_x[3], player_piece_place_y[3], null_piece_place_x[3], null_piece_place_y[3];
@@ -238,19 +238,19 @@ void computer_middle_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
     {
         for (b = 0; b < 3; b++)
         {
-            if (tick_tack_toe_phase[a][b] == 1)          //¼ÇÂ¼¼ÆËã»úµÄÆå×ÓµÄÎ»ÖÃ
+            if (tick_tack_toe_phase[a][b] == 1)          //è®°å½•è®¡ç®—æœºçš„æ£‹å­çš„ä½ç½®
             {
                 computer_piece_place_y[c] = a;
                 computer_piece_place_x[c] = b;
                 c++;
             }
-            if (tick_tack_toe_phase[a][b] == 0)          //¼ÇÂ¼¿Õ°×Æå¸ñµÄÎ»ÖÃ
+            if (tick_tack_toe_phase[a][b] == 0)          //è®°å½•ç©ºç™½æ£‹æ ¼çš„ä½ç½®
             {
                 null_piece_place_y[d] = a;
                 null_piece_place_x[d] = b;
                 d++;
             }
-            if (tick_tack_toe_phase[a][b] == 2)          //¼ÇÂ¼Íæ¼ÒµÄÆå×ÓµÄÎ»ÖÃ
+            if (tick_tack_toe_phase[a][b] == 2)          //è®°å½•ç©å®¶çš„æ£‹å­çš„ä½ç½®
             {
                 player_piece_place_y[e] = a;
                 player_piece_place_x[e] = b;
@@ -258,34 +258,34 @@ void computer_middle_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             }
         }
     }
-    for (a = 0; a < 3; a++)                //³õ²½½ø¹¥
+    for (a = 0; a < 3; a++)                //åˆæ­¥è¿›æ”»
     {
         for (b = 0; b < 3; b++)
         {
             y = computer_piece_place_y[a] - null_piece_place_y[b];
             x = computer_piece_place_x[a] - null_piece_place_x[b];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[b], null_piece_place_x[b], computer_piece_place_y[a], computer_piece_place_x[a]);
                 judge_end = judge_win(tick_tack_toe_phase);
-                if (judge_end == 0)     //Èç¹û²»ÄÜ»ñÊ¤£¬Ôò³·Ïú½»»»
+                if (judge_end == 0)     //å¦‚æœä¸èƒ½è·èƒœï¼Œåˆ™æ’¤é”€äº¤æ¢
                     exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[b], null_piece_place_x[b], computer_piece_place_y[a], computer_piece_place_x[a]);
-                else               //Èç¹û»ñÊ¤£¬ÔòÖÕÖ¹º¯Êı
+                else               //å¦‚æœè·èƒœï¼Œåˆ™ç»ˆæ­¢å‡½æ•°
                     goto step_1;
             }
         }
     }
-    for (b = 0, c = 0; b < 3; b++)                //³õ²½·ÀÊØ£¬Ò»¶Î£¬¼ì²âĞèÒª·ÀÊØµÄ¿Õ°×Æå¸ñ
+    for (b = 0, c = 0; b < 3; b++)                //åˆæ­¥é˜²å®ˆï¼Œä¸€æ®µï¼Œæ£€æµ‹éœ€è¦é˜²å®ˆçš„ç©ºç™½æ£‹æ ¼
     {
         for (a = 0; a < 3; a++)
         {
             y = player_piece_place_y[a] - null_piece_place_y[b];
             x = player_piece_place_x[a] - null_piece_place_x[b];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[b], null_piece_place_x[b], player_piece_place_y[a], player_piece_place_x[a]);
                 judge_end = judge_win(tick_tack_toe_phase);
-                if (judge_end != 0)            //¼ÇÂ¼Ä£ÄâÍæ¼ÒÊ¤ÀûÊ±ËùÉæ¼°µÄ¿Õ°×Æå¸ñµÄÎ»ÖÃ
+                if (judge_end != 0)            //è®°å½•æ¨¡æ‹Ÿç©å®¶èƒœåˆ©æ—¶æ‰€æ¶‰åŠçš„ç©ºç™½æ£‹æ ¼çš„ä½ç½®
                 {
                     simu_player_win_null_piece_place_y[c] = null_piece_place_y[b];
                     simu_player_win_null_piece_place_x[c] = null_piece_place_x[b];
@@ -299,7 +299,7 @@ void computer_middle_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
     }
     rand_move_3_3 = rand();
     rand_move_4_4 = rand();
-    for (a = 0; a < c; a++)             //³õ²½·ÀÊØ£¬¶ş¶Î£¬·ÀÊØÏàÓ¦¿Õ°×Æå¸ñ²¢·ÀÖ¹²úÉúĞÂµÄÆÆÕÀ
+    for (a = 0; a < c; a++)             //åˆæ­¥é˜²å®ˆï¼ŒäºŒæ®µï¼Œé˜²å®ˆç›¸åº”ç©ºç™½æ£‹æ ¼å¹¶é˜²æ­¢äº§ç”Ÿæ–°çš„ç ´ç»½
     {
         rand_move_3 = (rand_move_3_3 + a) % c;
         for (b = 0; b < 3; b++)
@@ -307,20 +307,20 @@ void computer_middle_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_4 = (rand_move_4_4 + b) % 3;
             y = simu_player_win_null_piece_place_y[rand_move_3] - computer_piece_place_y[rand_move_4];
             x = simu_player_win_null_piece_place_x[rand_move_3] - computer_piece_place_x[rand_move_4];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_player_win_null_piece_place_y[rand_move_3], simu_player_win_null_piece_place_x[rand_move_3], computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
                 d = judge_cause_flaw(tick_tack_toe_phase, player_piece_place_y, player_piece_place_x, computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
-                if (d == 1)               //²úÉúÆÆÕÀ£¬Ôò³·Ïú½»»»
+                if (d == 1)               //äº§ç”Ÿç ´ç»½ï¼Œåˆ™æ’¤é”€äº¤æ¢
                     exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_player_win_null_piece_place_y[rand_move_3], simu_player_win_null_piece_place_x[rand_move_3], computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
-                else                    //ÈôÎŞÆÆÕÀ²úÉú£¬ÔòÖÕÖ¹Ê£Óà²½Öè
+                else                    //è‹¥æ— ç ´ç»½äº§ç”Ÿï¼Œåˆ™ç»ˆæ­¢å‰©ä½™æ­¥éª¤
                     goto step_1;
             }
         }
     }
-    rand_move_1_1 = rand();       //ÊµÏÖËæ»ú
+    rand_move_1_1 = rand();       //å®ç°éšæœº
     rand_move_2_2 = rand();
-    for (a = 0; a < c; a++)        //³õ²½·ÀÊØ£¬Èı¶Î£¬´¦ÀíÎŞÂÛÈçºÎ·ÀÊØĞèÒª·ÀÊØµÄÆå¸ñ¶¼»á²úÉúÆÆÕÀµÄÇé¿ö£¬´ËÊ±Î±×°³ÉÃ»ÓĞ²úÉúÆÆÕÀµÄ¼ÙÏó
+    for (a = 0; a < c; a++)        //åˆæ­¥é˜²å®ˆï¼Œä¸‰æ®µï¼Œå¤„ç†æ— è®ºå¦‚ä½•é˜²å®ˆéœ€è¦é˜²å®ˆçš„æ£‹æ ¼éƒ½ä¼šäº§ç”Ÿç ´ç»½çš„æƒ…å†µï¼Œæ­¤æ—¶ä¼ªè£…æˆæ²¡æœ‰äº§ç”Ÿç ´ç»½çš„å‡è±¡
     {
         rand_move_1 = (rand_move_1_1 + a) % c;
         for (b = 0; b < 3; b++)
@@ -328,14 +328,14 @@ void computer_middle_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_2 = (rand_move_2_2 + b) % 3;
             y = simu_player_win_null_piece_place_y[rand_move_1] - computer_piece_place_y[rand_move_2];
             x = simu_player_win_null_piece_place_x[rand_move_1] - computer_piece_place_x[rand_move_2];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_player_win_null_piece_place_y[rand_move_1], simu_player_win_null_piece_place_x[rand_move_1], computer_piece_place_y[rand_move_2], computer_piece_place_x[rand_move_2]);
                 goto step_1;
             }
         }
     }
-    for (a = 0; a < 3; a++)        //³õ²½·ÀÊØ£¬ËÄ¶Î£¬´¦ÀíÎŞĞè·ÀÊØµÄÇé¿ö
+    for (a = 0; a < 3; a++)        //åˆæ­¥é˜²å®ˆï¼Œå››æ®µï¼Œå¤„ç†æ— éœ€é˜²å®ˆçš„æƒ…å†µ
     {
         rand_move_1 = (rand_move_1_1 + a) % 3;
         for (b = 0; b < 3; b++)
@@ -343,18 +343,18 @@ void computer_middle_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_2 = (rand_move_2_2 + b) % 3;
             y = null_piece_place_y[rand_move_1] - computer_piece_place_y[rand_move_2];
             x = null_piece_place_x[rand_move_1] - computer_piece_place_x[rand_move_2];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[rand_move_1], null_piece_place_x[rand_move_1], computer_piece_place_y[rand_move_2], computer_piece_place_x[rand_move_2]);
                 d = judge_cause_flaw(tick_tack_toe_phase, player_piece_place_y, player_piece_place_x, computer_piece_place_y[rand_move_2], computer_piece_place_x[rand_move_2]);
-                if (d == 1)               //²úÉúÆÆÕÀ£¬Ôò³·Ïú½»»»
+                if (d == 1)               //äº§ç”Ÿç ´ç»½ï¼Œåˆ™æ’¤é”€äº¤æ¢
                     exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[rand_move_1], null_piece_place_x[rand_move_1], computer_piece_place_y[rand_move_2], computer_piece_place_x[rand_move_2]);
-                else                    //ÈôÎŞÆÆÕÀ²úÉú£¬ÔòÖÕÖ¹Ê£Óà²½Öè
+                else                    //è‹¥æ— ç ´ç»½äº§ç”Ÿï¼Œåˆ™ç»ˆæ­¢å‰©ä½™æ­¥éª¤
                     goto step_1;
             }
         }
     }
-    for (a = 0; a < 3; a++)        //³õ²½·ÀÊØ£¬Îå¶Î£¬´¦ÀíÎŞÂÛÈçºÎÒÆ¶¯¶¼»á²úÉúÆÆÕÀµÄËÀ¾ÖµÄÇé¿ö
+    for (a = 0; a < 3; a++)        //åˆæ­¥é˜²å®ˆï¼Œäº”æ®µï¼Œå¤„ç†æ— è®ºå¦‚ä½•ç§»åŠ¨éƒ½ä¼šäº§ç”Ÿç ´ç»½çš„æ­»å±€çš„æƒ…å†µ
     {
         rand_move_1 = (rand_move_1_1 + a) % 3;
         for (b = 0; b < 3; b++)
@@ -362,7 +362,7 @@ void computer_middle_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_2 = (rand_move_2_2 + b) % 3;
             y = null_piece_place_y[rand_move_1] - computer_piece_place_y[rand_move_2];
             x = null_piece_place_x[rand_move_1] - computer_piece_place_x[rand_move_2];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[rand_move_1], null_piece_place_x[rand_move_1], computer_piece_place_y[rand_move_2], computer_piece_place_x[rand_move_2]);
                 goto step_1;
@@ -375,7 +375,7 @@ void computer_middle_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
     return;
 }
 
-//ÊµÏÖ¼ÆËã»ú¸ß¼¶ÒÆ¶¯Æå×Ó£¨½ø½×·ÀÊØÓë½ø½×½ø¹¥£©
+//å®ç°è®¡ç®—æœºé«˜çº§ç§»åŠ¨æ£‹å­ï¼ˆè¿›é˜¶é˜²å®ˆä¸è¿›é˜¶è¿›æ”»ï¼‰
 void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
 {
     TICK_TACK_TOE computer_piece_place_x[3], computer_piece_place_y[3], player_piece_place_x[3], player_piece_place_y[3], null_piece_place_x[3], null_piece_place_y[3];
@@ -392,19 +392,19 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
     {
         for (b = 0; b < 3; b++)
         {
-            if (tick_tack_toe_phase[a][b] == 1)          //¼ÇÂ¼¼ÆËã»úµÄÆå×ÓµÄÎ»ÖÃ
+            if (tick_tack_toe_phase[a][b] == 1)          //è®°å½•è®¡ç®—æœºçš„æ£‹å­çš„ä½ç½®
             {
                 computer_piece_place_y[c] = a;
                 computer_piece_place_x[c] = b;
                 c++;
             }
-            if (tick_tack_toe_phase[a][b] == 0)          //¼ÇÂ¼¿Õ°×Æå¸ñµÄÎ»ÖÃ
+            if (tick_tack_toe_phase[a][b] == 0)          //è®°å½•ç©ºç™½æ£‹æ ¼çš„ä½ç½®
             {
                 null_piece_place_y[d] = a;
                 null_piece_place_x[d] = b;
                 d++;
             }
-            if (tick_tack_toe_phase[a][b] == 2)          //¼ÇÂ¼Íæ¼ÒµÄÆå×ÓµÄÎ»ÖÃ
+            if (tick_tack_toe_phase[a][b] == 2)          //è®°å½•ç©å®¶çš„æ£‹å­çš„ä½ç½®
             {
                 player_piece_place_y[e] = a;
                 player_piece_place_x[e] = b;
@@ -412,30 +412,30 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             }
         }
     }
-    for (a = 0; a < 3; a++)                //½ø½×½ø¹¥£¬Ò»¶Î£¬´¦ÀíÄÜÔÚÕâÒ»ÊÖÖ±½Ó»ñµÃÊ¤ÀûµÄÇé¿ö
+    for (a = 0; a < 3; a++)                //è¿›é˜¶è¿›æ”»ï¼Œä¸€æ®µï¼Œå¤„ç†èƒ½åœ¨è¿™ä¸€æ‰‹ç›´æ¥è·å¾—èƒœåˆ©çš„æƒ…å†µ
     {
         for (b = 0; b < 3; b++)
         {
             y = computer_piece_place_y[a] - null_piece_place_y[b];
             x = computer_piece_place_x[a] - null_piece_place_x[b];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[b], null_piece_place_x[b], computer_piece_place_y[a], computer_piece_place_x[a]);
                 judge_end = judge_win(tick_tack_toe_phase);
-                if (judge_end == 0)     //Èç¹û²»ÄÜ»ñÊ¤£¬Ôò³·Ïú½»»»
+                if (judge_end == 0)     //å¦‚æœä¸èƒ½è·èƒœï¼Œåˆ™æ’¤é”€äº¤æ¢
                     exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[b], null_piece_place_x[b], computer_piece_place_y[a], computer_piece_place_x[a]);
-                else               //Èç¹û»ñÊ¤£¬ÔòÖÕÖ¹º¯Êı
+                else               //å¦‚æœè·èƒœï¼Œåˆ™ç»ˆæ­¢å‡½æ•°
                     goto step_1;
             }
         }
     }
-    for (a = 0; a < 3; a++)             //½ø½×½ø¹¥£¬¶ş¶Î£¬´¦ÀíÄÜÔÚÏÂÒ»ÊÖ»ñµÃÊ¤ÀûµÄÇé¿ö£¨ÒÑÅÅ³ı¿ÉÒÔÖ±½Ó»ñÊ¤»òµ¼ÖÂÔÚ¶Ô·½ÏÂÒ»ÊÖÊ§°ÜµÄÇé¿ö£©£¬²»ÄÑÇî¾ÙµÃ³ö¼º·½ÏÂÒ»ÊÖ»ñÊ¤µÄÆå¾ÖµÄ¼¯ºÏÓë¶Ô·½ÏÂÒ»ÊÖ»ñÊ¤µÄÆå¾ÖµÄ¼¯ºÏµÄ½»¼¯Îª¿Õ¼¯
+    for (a = 0; a < 3; a++)             //è¿›é˜¶è¿›æ”»ï¼ŒäºŒæ®µï¼Œå¤„ç†èƒ½åœ¨ä¸‹ä¸€æ‰‹è·å¾—èƒœåˆ©çš„æƒ…å†µï¼ˆå·²æ’é™¤å¯ä»¥ç›´æ¥è·èƒœæˆ–å¯¼è‡´åœ¨å¯¹æ–¹ä¸‹ä¸€æ‰‹å¤±è´¥çš„æƒ…å†µï¼‰ï¼Œä¸éš¾ç©·ä¸¾å¾—å‡ºå·±æ–¹ä¸‹ä¸€æ‰‹è·èƒœçš„æ£‹å±€çš„é›†åˆä¸å¯¹æ–¹ä¸‹ä¸€æ‰‹è·èƒœçš„æ£‹å±€çš„é›†åˆçš„äº¤é›†ä¸ºç©ºé›†
     {
         for (b = 0; b < 3; b++)
         {
             y = computer_piece_place_y[a] - null_piece_place_y[b];
             x = computer_piece_place_x[a] - null_piece_place_x[b];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[b], null_piece_place_x[b], computer_piece_place_y[a], computer_piece_place_x[a]);
                 if (!(judge_cause_win_a_side(tick_tack_toe_phase, 1, 2)))
@@ -445,17 +445,17 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             }
         }
     }
-    for (b = 0, c = 0; b < 3; b++)                //½ø½×·ÀÊØ£¬Ò»¶Î£¬¼ì²â¼±ÇĞĞèÒª·ÀÊØµÄ¿Õ°×Æå¸ñ£¨µÚÒ»ÀàÆÆÕÀ£©
+    for (b = 0, c = 0; b < 3; b++)                //è¿›é˜¶é˜²å®ˆï¼Œä¸€æ®µï¼Œæ£€æµ‹æ€¥åˆ‡éœ€è¦é˜²å®ˆçš„ç©ºç™½æ£‹æ ¼ï¼ˆç¬¬ä¸€ç±»ç ´ç»½ï¼‰
     {
         for (a = 0; a < 3; a++)
         {
             y = player_piece_place_y[a] - null_piece_place_y[b];
             x = player_piece_place_x[a] - null_piece_place_x[b];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[b], null_piece_place_x[b], player_piece_place_y[a], player_piece_place_x[a]);
                 judge_end = judge_win(tick_tack_toe_phase);
-                if (judge_end != 0)            //¼ÇÂ¼Ä£ÄâÍæ¼ÒÊ¤ÀûÊ±ËùÉæ¼°µÄ¿Õ°×Æå¸ñµÄÎ»ÖÃ
+                if (judge_end != 0)            //è®°å½•æ¨¡æ‹Ÿç©å®¶èƒœåˆ©æ—¶æ‰€æ¶‰åŠçš„ç©ºç™½æ£‹æ ¼çš„ä½ç½®
                 {
                     simu_player_win_null_piece_place_y[c] = null_piece_place_y[b];
                     simu_player_win_null_piece_place_x[c] = null_piece_place_x[b];
@@ -467,16 +467,16 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             }
         }
     }
-    for (b = 0, d = 0; b < 3; b++)                //½ø½×·ÀÊØ£¬¶ş¶Î£¬¼ì²â¿ÉÄÜ»áµ¼ÖÂ¶ÔÊÖÔÚµÚ¶şÊÖ»ñÊ¤µÄ¿Õ°×Æå¸ñ£¨µÚ¶şÀàÆÆÕÀ£©
+    for (b = 0, d = 0; b < 3; b++)                //è¿›é˜¶é˜²å®ˆï¼ŒäºŒæ®µï¼Œæ£€æµ‹å¯èƒ½ä¼šå¯¼è‡´å¯¹æ‰‹åœ¨ç¬¬äºŒæ‰‹è·èƒœçš„ç©ºç™½æ£‹æ ¼ï¼ˆç¬¬äºŒç±»ç ´ç»½ï¼‰
     {
         for (a = 0; a < 3; a++)
         {
             y = player_piece_place_y[a] - null_piece_place_y[b];
             x = player_piece_place_x[a] - null_piece_place_x[b];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[b], null_piece_place_x[b], player_piece_place_y[a], player_piece_place_x[a]);
-                if (judge_cause_win_a_side(tick_tack_toe_phase, 2, 1))            //¼ÇÂ¼Ä£ÄâÍæ¼ÒÊ¤ÀûÊ±ËùÉæ¼°µÄ¿Õ°×Æå¸ñµÄÎ»ÖÃ
+                if (judge_cause_win_a_side(tick_tack_toe_phase, 2, 1))            //è®°å½•æ¨¡æ‹Ÿç©å®¶èƒœåˆ©æ—¶æ‰€æ¶‰åŠçš„ç©ºç™½æ£‹æ ¼çš„ä½ç½®
                 {
                     simu_1_player_win_null_piece_place_y[d] = null_piece_place_y[b];
                     simu_1_player_win_null_piece_place_x[d] = null_piece_place_x[b];
@@ -490,8 +490,8 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
     }
     rand_move_3_3 = rand();
     rand_move_4_4 = rand();
-    //±£Áô¶Ô´æÔÚÁ½´¦ĞèÒª·ÀÊØµÄ¿Õ°×Æå¸ñµÄÇé¿öÒÔ¼°ÎŞ·¨·ÀÊØµÄÇé¿öÊÇÎªÁË±£ÏÕ£¬¾¡¹ÜÀíÂÛÉÏÕâÖÖÇé¿ö²¢²»»áÔÚ±»´Ëº¯ÊıÓöµ½
-    for (a = 0; a < c; a++)             //½ø½×·ÀÊØ£¬Èı¶Î£¬·ÀÊØ¼±ÇĞĞèÒª·ÀÊØµÄÆå¸ñ²¢·ÀÖ¹²úÉúµÚÒ»ÀàºÍµÚ¶şÀàÆÆÕÀ
+    //ä¿ç•™å¯¹å­˜åœ¨ä¸¤å¤„éœ€è¦é˜²å®ˆçš„ç©ºç™½æ£‹æ ¼çš„æƒ…å†µä»¥åŠæ— æ³•é˜²å®ˆçš„æƒ…å†µæ˜¯ä¸ºäº†ä¿é™©ï¼Œå°½ç®¡ç†è®ºä¸Šè¿™ç§æƒ…å†µå¹¶ä¸ä¼šåœ¨è¢«æ­¤å‡½æ•°é‡åˆ°
+    for (a = 0; a < c; a++)             //è¿›é˜¶é˜²å®ˆï¼Œä¸‰æ®µï¼Œé˜²å®ˆæ€¥åˆ‡éœ€è¦é˜²å®ˆçš„æ£‹æ ¼å¹¶é˜²æ­¢äº§ç”Ÿç¬¬ä¸€ç±»å’Œç¬¬äºŒç±»ç ´ç»½
     {
         rand_move_3 = (rand_move_3_3 + a) % c;
         for (b = 0; b < 3; b++)
@@ -499,18 +499,18 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_4 = (rand_move_4_4 + b) % 3;
             y = simu_player_win_null_piece_place_y[rand_move_3] - computer_piece_place_y[rand_move_4];
             x = simu_player_win_null_piece_place_x[rand_move_3] - computer_piece_place_x[rand_move_4];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_player_win_null_piece_place_y[rand_move_3], simu_player_win_null_piece_place_x[rand_move_3], computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
                 d = judge_cause_flaw(tick_tack_toe_phase, player_piece_place_y, player_piece_place_x, computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
-                if ((d == 1) || (judge_cause_win_a_side(tick_tack_toe_phase, 2, 1)))               //²úÉúÆÆÕÀ£¬Ôò³·Ïú½»»»
+                if ((d == 1) || (judge_cause_win_a_side(tick_tack_toe_phase, 2, 1)))               //äº§ç”Ÿç ´ç»½ï¼Œåˆ™æ’¤é”€äº¤æ¢
                     exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_player_win_null_piece_place_y[rand_move_3], simu_player_win_null_piece_place_x[rand_move_3], computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
-                else                    //ÈôÎŞÆÆÕÀ²úÉú£¬ÔòÖÕÖ¹Ê£Óà²½Öè
+                else                    //è‹¥æ— ç ´ç»½äº§ç”Ÿï¼Œåˆ™ç»ˆæ­¢å‰©ä½™æ­¥éª¤
                     goto step_1;
             }
         }
     }
-    for (a = 0; a < c; a++)             //½ø½×·ÀÊØ£¬ËÄ¶Î£¬·ÀÊØÏàÓ¦¿Õ°×Æå¸ñ²¢·ÀÖ¹²úÉúµÚÒ»ÀàÆÆÕÀ
+    for (a = 0; a < c; a++)             //è¿›é˜¶é˜²å®ˆï¼Œå››æ®µï¼Œé˜²å®ˆç›¸åº”ç©ºç™½æ£‹æ ¼å¹¶é˜²æ­¢äº§ç”Ÿç¬¬ä¸€ç±»ç ´ç»½
     {
         rand_move_3 = (rand_move_3_3 + a) % c;
         for (b = 0; b < 3; b++)
@@ -518,20 +518,20 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_4 = (rand_move_4_4 + b) % 3;
             y = simu_player_win_null_piece_place_y[rand_move_3] - computer_piece_place_y[rand_move_4];
             x = simu_player_win_null_piece_place_x[rand_move_3] - computer_piece_place_x[rand_move_4];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_player_win_null_piece_place_y[rand_move_3], simu_player_win_null_piece_place_x[rand_move_3], computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
                 d = judge_cause_flaw(tick_tack_toe_phase, player_piece_place_y, player_piece_place_x, computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
-                if (d == 1)               //²úÉúÆÆÕÀ£¬Ôò³·Ïú½»»»
+                if (d == 1)               //äº§ç”Ÿç ´ç»½ï¼Œåˆ™æ’¤é”€äº¤æ¢
                     exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_player_win_null_piece_place_y[rand_move_3], simu_player_win_null_piece_place_x[rand_move_3], computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
-                else                    //ÈôÎŞÆÆÕÀ²úÉú£¬ÔòÖÕÖ¹Ê£Óà²½Öè
+                else                    //è‹¥æ— ç ´ç»½äº§ç”Ÿï¼Œåˆ™ç»ˆæ­¢å‰©ä½™æ­¥éª¤
                     goto step_1;
             }
         }
     }
-    rand_move_1_1 = rand();       //ÊµÏÖËæ»ú
+    rand_move_1_1 = rand();       //å®ç°éšæœº
     rand_move_2_2 = rand();
-    for (a = 0; a < c; a++)        //½ø½×·ÀÊØ£¬Îå¶Î£¬´¦ÀíÎŞÂÛÈçºÎ·ÀÊØĞèÒª·ÀÊØµÄÆå¸ñ¶¼»á²úÉúµÚÒ»ÀàÆÆÕÀµÄÇé¿ö£¬´ËÊ±Î±×°³öÃ»ÓĞ²úÉúÏàÓ¦ÆÆÕÀµÄ¼ÙÏó
+    for (a = 0; a < c; a++)        //è¿›é˜¶é˜²å®ˆï¼Œäº”æ®µï¼Œå¤„ç†æ— è®ºå¦‚ä½•é˜²å®ˆéœ€è¦é˜²å®ˆçš„æ£‹æ ¼éƒ½ä¼šäº§ç”Ÿç¬¬ä¸€ç±»ç ´ç»½çš„æƒ…å†µï¼Œæ­¤æ—¶ä¼ªè£…å‡ºæ²¡æœ‰äº§ç”Ÿç›¸åº”ç ´ç»½çš„å‡è±¡
     {
         rand_move_1 = (rand_move_1_1 + a) % c;
         for (b = 0; b < 3; b++)
@@ -539,14 +539,14 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_2 = (rand_move_2_2 + b) % 3;
             y = simu_player_win_null_piece_place_y[rand_move_1] - computer_piece_place_y[rand_move_2];
             x = simu_player_win_null_piece_place_x[rand_move_1] - computer_piece_place_x[rand_move_2];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_player_win_null_piece_place_y[rand_move_1], simu_player_win_null_piece_place_x[rand_move_1], computer_piece_place_y[rand_move_2], computer_piece_place_x[rand_move_2]);
                 goto step_1;
             }
         }
     }
-    for (a = 0; a < d; a++)             //½ø½×·ÀÊØ£¬Áù¶Î£¬×è¶Ï¶Ô·½ÔÚºóÁ½ÊÖ»ñµÃÊ¤Àû²¢ÔÚ·ÀÊØÊ±·ÀÖ¹²úÉúĞÂµÄÆÆÕÀ
+    for (a = 0; a < d; a++)             //è¿›é˜¶é˜²å®ˆï¼Œå…­æ®µï¼Œé˜»æ–­å¯¹æ–¹åœ¨åä¸¤æ‰‹è·å¾—èƒœåˆ©å¹¶åœ¨é˜²å®ˆæ—¶é˜²æ­¢äº§ç”Ÿæ–°çš„ç ´ç»½
     {
         rand_move_3 = (rand_move_3_3 + a) % d;
         for (b = 0; b < 3; b++)
@@ -554,18 +554,18 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_4 = (rand_move_4_4 + b) % 3;
             y = simu_1_player_win_null_piece_place_y[rand_move_3] - computer_piece_place_y[rand_move_4];
             x = simu_1_player_win_null_piece_place_x[rand_move_3] - computer_piece_place_x[rand_move_4];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_1_player_win_null_piece_place_y[rand_move_3], simu_1_player_win_null_piece_place_x[rand_move_3], computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
                 d = judge_cause_flaw(tick_tack_toe_phase, player_piece_place_y, player_piece_place_x, computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
-                if ((d == 1) || (judge_cause_win_a_side(tick_tack_toe_phase, 2, 1)))               //²úÉúÆÆÕÀ£¬Ôò³·Ïú½»»»
+                if ((d == 1) || (judge_cause_win_a_side(tick_tack_toe_phase, 2, 1)))               //äº§ç”Ÿç ´ç»½ï¼Œåˆ™æ’¤é”€äº¤æ¢
                     exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_1_player_win_null_piece_place_y[rand_move_3], simu_1_player_win_null_piece_place_x[rand_move_3], computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
-                else                    //ÈôÎŞÆÆÕÀ²úÉú£¬ÔòÖÕÖ¹Ê£Óà²½Öè
+                else                    //è‹¥æ— ç ´ç»½äº§ç”Ÿï¼Œåˆ™ç»ˆæ­¢å‰©ä½™æ­¥éª¤
                     goto step_1;
             }
         }
     }
-    for (a = 0; a < d; a++)             //½ø½×·ÀÊØ£¬Æß¶Î£¬ÎŞ·¨×è¶Ï·ÀÊØ¶Ô·½ÔÚºóÁ½ÊÖ»ñµÃÊ¤ÀûÊ±²úÉúµÚ¶şÀàÆÆÕÀ£¬Î±×°³öÎ´²úÉúÏàÓ¦ÆÆÕÀµÄ¼ÙÏó
+    for (a = 0; a < d; a++)             //è¿›é˜¶é˜²å®ˆï¼Œä¸ƒæ®µï¼Œæ— æ³•é˜»æ–­é˜²å®ˆå¯¹æ–¹åœ¨åä¸¤æ‰‹è·å¾—èƒœåˆ©æ—¶äº§ç”Ÿç¬¬äºŒç±»ç ´ç»½ï¼Œä¼ªè£…å‡ºæœªäº§ç”Ÿç›¸åº”ç ´ç»½çš„å‡è±¡
     {
         rand_move_3 = (rand_move_3_3 + a) % d;
         for (b = 0; b < 3; b++)
@@ -573,18 +573,18 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_4 = (rand_move_4_4 + b) % 3;
             y = simu_1_player_win_null_piece_place_y[rand_move_3] - computer_piece_place_y[rand_move_4];
             x = simu_1_player_win_null_piece_place_x[rand_move_3] - computer_piece_place_x[rand_move_4];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_1_player_win_null_piece_place_y[rand_move_3], simu_1_player_win_null_piece_place_x[rand_move_3], computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
                 d = judge_cause_flaw(tick_tack_toe_phase, player_piece_place_y, player_piece_place_x, computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
-                if (d == 1)               //²úÉúÆÆÕÀ£¬Ôò³·Ïú½»»»
+                if (d == 1)               //äº§ç”Ÿç ´ç»½ï¼Œåˆ™æ’¤é”€äº¤æ¢
                     exchange_tick_tack_toe_phase(tick_tack_toe_phase, simu_1_player_win_null_piece_place_y[rand_move_3], simu_1_player_win_null_piece_place_x[rand_move_3], computer_piece_place_y[rand_move_4], computer_piece_place_x[rand_move_4]);
-                else                    //ÈôÎŞÆÆÕÀ²úÉú£¬ÔòÖÕÖ¹Ê£Óà²½Öè
+                else                    //è‹¥æ— ç ´ç»½äº§ç”Ÿï¼Œåˆ™ç»ˆæ­¢å‰©ä½™æ­¥éª¤
                     goto step_1;
             }
         }
     }
-    for (a = 0; a < 3; a++)        //½ø½×·ÀÊØ£¬°Ë¶Î£¬´¦ÀíÎŞĞè·ÀÊØµÄÇé¿ö
+    for (a = 0; a < 3; a++)        //è¿›é˜¶é˜²å®ˆï¼Œå…«æ®µï¼Œå¤„ç†æ— éœ€é˜²å®ˆçš„æƒ…å†µ
     {
         rand_move_1 = (rand_move_1_1 + a) % 3;
         for (b = 0; b < 3; b++)
@@ -592,18 +592,18 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_2 = (rand_move_2_2 + b) % 3;
             y = null_piece_place_y[rand_move_1] - computer_piece_place_y[rand_move_2];
             x = null_piece_place_x[rand_move_1] - computer_piece_place_x[rand_move_2];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[rand_move_1], null_piece_place_x[rand_move_1], computer_piece_place_y[rand_move_2], computer_piece_place_x[rand_move_2]);
                 d = judge_cause_flaw(tick_tack_toe_phase, player_piece_place_y, player_piece_place_x, computer_piece_place_y[rand_move_2], computer_piece_place_x[rand_move_2]);
-                if (d == 1)               //²úÉúÆÆÕÀ£¬Ôò³·Ïú½»»»
+                if (d == 1)               //äº§ç”Ÿç ´ç»½ï¼Œåˆ™æ’¤é”€äº¤æ¢
                     exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[rand_move_1], null_piece_place_x[rand_move_1], computer_piece_place_y[rand_move_2], computer_piece_place_x[rand_move_2]);
-                else                    //ÈôÎŞÆÆÕÀ²úÉú£¬ÔòÖÕÖ¹Ê£Óà²½Öè
+                else                    //è‹¥æ— ç ´ç»½äº§ç”Ÿï¼Œåˆ™ç»ˆæ­¢å‰©ä½™æ­¥éª¤
                     goto step_1;
             }
         }
     }
-    for (a = 0; a < 3; a++)        //½ø½×·ÀÊØ£¬¾Å¶Î£¬´¦ÀíÎŞÂÛÈçºÎÒÆ¶¯¶¼»á²úÉúÆÆÕÀµÄËÀ¾ÖµÄÇé¿ö£¨ÀíÂÛÉÏÕâÖÖÇé¿ö²»»á³öÏÖ£¬±£ÏÕÆğ¼û±£ÁôÏàÓ¦´úÂë£©
+    for (a = 0; a < 3; a++)        //è¿›é˜¶é˜²å®ˆï¼Œä¹æ®µï¼Œå¤„ç†æ— è®ºå¦‚ä½•ç§»åŠ¨éƒ½ä¼šäº§ç”Ÿç ´ç»½çš„æ­»å±€çš„æƒ…å†µï¼ˆç†è®ºä¸Šè¿™ç§æƒ…å†µä¸ä¼šå‡ºç°ï¼Œä¿é™©èµ·è§ä¿ç•™ç›¸åº”ä»£ç ï¼‰
     {
         rand_move_1 = (rand_move_1_1 + a) % 3;
         for (b = 0; b < 3; b++)
@@ -611,7 +611,7 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
             rand_move_2 = (rand_move_2_2 + b) % 3;
             y = null_piece_place_y[rand_move_1] - computer_piece_place_y[rand_move_2];
             x = null_piece_place_x[rand_move_1] - computer_piece_place_x[rand_move_2];
-            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+            if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
             {
                 exchange_tick_tack_toe_phase(tick_tack_toe_phase, null_piece_place_y[rand_move_1], null_piece_place_x[rand_move_1], computer_piece_place_y[rand_move_2], computer_piece_place_x[rand_move_2]);
                 goto step_1;
@@ -623,7 +623,7 @@ void computer_high_move_piece(TICK_TACK_TOE tick_tack_toe_phase[][3])
     return;
 }
 
-//»ñÈ¡Íæ¼ÒÑ¡ÔñµÄÓÎÏ·ÄÑ¶È
+//è·å–ç©å®¶é€‰æ‹©çš„æ¸¸æˆéš¾åº¦
 char get_difficulty_level(void)
 {
     char difficulty_level;
@@ -648,10 +648,10 @@ char get_difficulty_level(void)
 
 
 
-//ÒÔÏÂº¯Êı²»Ó¦ÔÚÖ÷º¯ÊıÖĞ±»µ÷ÓÃ
-//ÒÔÏÂº¯Êı²»Ó¦ÔÚÖ÷º¯ÊıÖĞ±»µ÷ÓÃ
+//ä»¥ä¸‹å‡½æ•°ä¸åº”åœ¨ä¸»å‡½æ•°ä¸­è¢«è°ƒç”¨
+//ä»¥ä¸‹å‡½æ•°ä¸åº”åœ¨ä¸»å‡½æ•°ä¸­è¢«è°ƒç”¨
 
-//½»»»ÆåÅÌÖĞÖ¸¶¨Î»ÖÃµÄÆå×Ó
+//äº¤æ¢æ£‹ç›˜ä¸­æŒ‡å®šä½ç½®çš„æ£‹å­
 void exchange_tick_tack_toe_phase(TICK_TACK_TOE tick_tack_toe_phase[][3], TICK_TACK_TOE y, TICK_TACK_TOE x, TICK_TACK_TOE yy, TICK_TACK_TOE xx)
 {
     TICK_TACK_TOE temp;
@@ -663,17 +663,17 @@ void exchange_tick_tack_toe_phase(TICK_TACK_TOE tick_tack_toe_phase[][3], TICK_T
     return;
 }
 
-//ÅĞ¶ÏĞĞ¶¯ÊÇ·ñ»á²úÉúÆÆÕÀ²¢³·Ïú²úÉúÆÆÕÀµÄ½»»»µÄº¯Êı
+//åˆ¤æ–­è¡ŒåŠ¨æ˜¯å¦ä¼šäº§ç”Ÿç ´ç»½å¹¶æ’¤é”€äº§ç”Ÿç ´ç»½çš„äº¤æ¢çš„å‡½æ•°
 int judge_cause_flaw(TICK_TACK_TOE tick_tack_toe_phase[][3], TICK_TACK_TOE player_piece_place_y[], TICK_TACK_TOE player_piece_place_x[], TICK_TACK_TOE judge_piece_place_y, TICK_TACK_TOE judge_piece_place_x)
 {
     int a, x, y;
     int judge_end, d;
 
-    for (a = 0; a < 3; a++)             //ÅĞ¶Ï´Ë·ÀÊØÊÇ·ñ»á²úÉúĞÂµÄÆÆÕÀ
+    for (a = 0; a < 3; a++)             //åˆ¤æ–­æ­¤é˜²å®ˆæ˜¯å¦ä¼šäº§ç”Ÿæ–°çš„ç ´ç»½
     {
         y = player_piece_place_y[a] - judge_piece_place_y;
         x = player_piece_place_x[a] - judge_piece_place_x;
-        if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //Ñ¡³öºÏ·¨µÄÒÆ¶¯·½Ê½
+        if (((((x == 1) || (x == -1)) && (y == 0)) || (((y == 1) || (y == -1)) && (x == 0)) || ((x * y == 1) ||(x * y == -1))))  //é€‰å‡ºåˆæ³•çš„ç§»åŠ¨æ–¹å¼
         {
             exchange_tick_tack_toe_phase(tick_tack_toe_phase, judge_piece_place_y, judge_piece_place_x, player_piece_place_y[a], player_piece_place_x[a]);
             judge_end = judge_win(tick_tack_toe_phase);
@@ -691,49 +691,41 @@ int judge_cause_flaw(TICK_TACK_TOE tick_tack_toe_phase[][3], TICK_TACK_TOE playe
     return d;
 }
 
-//ÓÃÓÚÅĞ¶ÏÊÇ·ñÊÇ±ØÊ¤Æå¾ÖµÄº¯Êı
+//ç”¨äºåˆ¤æ–­æ˜¯å¦æ˜¯å¿…èƒœæ£‹å±€çš„å‡½æ•°
 int judge_cause_win_a_side(TICK_TACK_TOE tick_tack_toe_phase[][3], TICK_TACK_TOE a, TICK_TACK_TOE b)
 {
     int k, i, j;
     int c = 0;
-    int judge_win_a_side_array[7];
 
-    judge_win_a_side_array[0] = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[0][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[1][2] == b) && (tick_tack_toe_phase[2][2] == b) && (tick_tack_toe_phase[2][0] == 0));
-    judge_win_a_side_array[1] = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[0][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[0][1] == 0) && (tick_tack_toe_phase[2][0] == 0));
-    judge_win_a_side_array[2] = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[0][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[1][0] == 0) && (tick_tack_toe_phase[2][0] == 0));
-    judge_win_a_side_array[3] = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[1][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[0][1] == 0) && (tick_tack_toe_phase[1][0] == 0));
-    judge_win_a_side_array[4] = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[1][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[0][1] == b) && (tick_tack_toe_phase[1][0] == b) && (tick_tack_toe_phase[2][2] == b) && (tick_tack_toe_phase[0][0] == 0) && (tick_tack_toe_phase[0][2] == 0) && (tick_tack_toe_phase[2][0] == 0));
-    judge_win_a_side_array[5] = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[1][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[1][0] == b) && (tick_tack_toe_phase[2][0] == b) && (tick_tack_toe_phase[2][2] == b) && (tick_tack_toe_phase[0][0] == 0) && (tick_tack_toe_phase[0][1] == 0) && (tick_tack_toe_phase[0][2] == 0));
-    judge_win_a_side_array[6] = ((tick_tack_toe_phase[1][2] == a) && (tick_tack_toe_phase[0][1] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[0][2] == b) && (tick_tack_toe_phase[1][1] == b) && (tick_tack_toe_phase[2][2] == b) && (tick_tack_toe_phase[0][0] == 0) && (tick_tack_toe_phase[1][0] == 0) && (tick_tack_toe_phase[2][0] == 0));
     for (k = 0; k < 7; k++)
     {
         for (i = 0; i < 4; i++)
         {
-            if (judge_win_a_side_array[k])
+            if (judge_win_a_side(tick_tack_toe_phase, k, a, b))
             {
                 c = 1;
                 goto step_1;
             }
-            flip_upside_down_phase(tick_tack_toe_phase);   //ÓÃÓÚÅĞ¶¨·­×ªºóµÄÇé¿öµÄ·­×ª²Ù×÷
-            if (judge_win_a_side_array[k])
+            flip_upside_down_phase(tick_tack_toe_phase);   //ç”¨äºåˆ¤å®šç¿»è½¬åçš„æƒ…å†µçš„ç¿»è½¬æ“ä½œ
+            if (judge_win_a_side(tick_tack_toe_phase, k, a, b))
             {
-                flip_upside_down_phase(tick_tack_toe_phase);  //³·Ïú·­×ª²Ù×÷
+                flip_upside_down_phase(tick_tack_toe_phase);  //æ’¤é”€ç¿»è½¬æ“ä½œ
                 c = 1;
                 goto step_1;
             }
-            flip_upside_down_phase(tick_tack_toe_phase);      //³·Ïú·­×ª²Ù×÷
-            retate_anticlockwise_phase(tick_tack_toe_phase);   //ÎªÏÂÒ»´ÎÑ­»·¶øĞı×ª
+            flip_upside_down_phase(tick_tack_toe_phase);      //æ’¤é”€ç¿»è½¬æ“ä½œ
+            retate_anticlockwise_phase(tick_tack_toe_phase);   //ä¸ºä¸‹ä¸€æ¬¡å¾ªç¯è€Œæ—‹è½¬
         }
     }
 
     step_1:;
-    for (j = 0; j < 4 - i; j++)                 //½«Æå¾ÖµÄÊı×é»¹Ô­ÖÁÅĞ¶¨Ç°
+    for (j = 0; j < 4 - i; j++)                 //å°†æ£‹å±€çš„æ•°ç»„è¿˜åŸè‡³åˆ¤å®šå‰
         retate_anticlockwise_phase(tick_tack_toe_phase);
 
     return c;
 }
 
-//ÓÃÓÚĞı×ªÆå¾ÖµÄº¯Êı
+//ç”¨äºæ—‹è½¬æ£‹å±€çš„å‡½æ•°
 void retate_anticlockwise_phase(TICK_TACK_TOE tick_tack_toe_phase[][3])
 {
     TICK_TACK_TOE tick_tack_toe_phase_copy[3][3];
@@ -756,7 +748,7 @@ void retate_anticlockwise_phase(TICK_TACK_TOE tick_tack_toe_phase[][3])
     return;
 }
 
-//ÓÃÓÚÉÏÏÂ·­×ªÆå¾ÖµÄº¯Êı
+//ç”¨äºä¸Šä¸‹ç¿»è½¬æ£‹å±€çš„å‡½æ•°
 void flip_upside_down_phase(TICK_TACK_TOE tick_tack_toe_phase[][3])
 {
     TICK_TACK_TOE tick_tack_toe_phase_copy[3][3];
@@ -775,4 +767,37 @@ void flip_upside_down_phase(TICK_TACK_TOE tick_tack_toe_phase[][3])
     tick_tack_toe_phase[2][2] = tick_tack_toe_phase_copy[0][2];
 
     return;
+}
+
+//ç”¨äºè¿”ä¼šæ£‹å±€æƒ…å†µçš„å‡½æ•°
+int judge_win_a_side(TICK_TACK_TOE tick_tack_toe_phase[][3], int k, TICK_TACK_TOE a, TICK_TACK_TOE b)
+{
+    int judge_win_a_side = 0;
+
+    switch(k)
+    {
+    case 0:
+        judge_win_a_side = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[0][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[1][2] == b) && (tick_tack_toe_phase[2][2] == b) && (tick_tack_toe_phase[2][0] == 0));
+        break;
+    case 1:
+        judge_win_a_side = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[0][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[0][1] == 0) && (tick_tack_toe_phase[2][0] == 0));
+        break;
+    case 2:
+        judge_win_a_side = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[0][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[1][0] == 0) && (tick_tack_toe_phase[2][0] == 0));
+        break;
+    case 3:
+        judge_win_a_side = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[1][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[0][1] == 0) && (tick_tack_toe_phase[1][0] == 0));
+        break;
+    case 4:
+        judge_win_a_side = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[1][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[0][1] == b) && (tick_tack_toe_phase[1][0] == b) && (tick_tack_toe_phase[2][2] == b) && (tick_tack_toe_phase[0][0] == 0) && (tick_tack_toe_phase[0][2] == 0) && (tick_tack_toe_phase[2][0] == 0));
+        break;
+    case 5:
+        judge_win_a_side = ((tick_tack_toe_phase[1][1] == a) && (tick_tack_toe_phase[1][2] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[1][0] == b) && (tick_tack_toe_phase[2][0] == b) && (tick_tack_toe_phase[2][2] == b) && (tick_tack_toe_phase[0][0] == 0) && (tick_tack_toe_phase[0][1] == 0) && (tick_tack_toe_phase[0][2] == 0));
+        break;
+    case 6:
+        judge_win_a_side = ((tick_tack_toe_phase[1][2] == a) && (tick_tack_toe_phase[0][1] == a) && (tick_tack_toe_phase[2][1] == a) && (tick_tack_toe_phase[0][2] == b) && (tick_tack_toe_phase[1][1] == b) && (tick_tack_toe_phase[2][2] == b) && (tick_tack_toe_phase[0][0] == 0) && (tick_tack_toe_phase[1][0] == 0) && (tick_tack_toe_phase[2][0] == 0));
+        break;
+    }
+
+    return judge_win_a_side;
 }
