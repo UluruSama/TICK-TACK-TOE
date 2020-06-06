@@ -769,7 +769,7 @@ void flip_upside_down_phase(TICK_TACK_TOE tick_tack_toe_phase[][3])
     return;
 }
 
-//用于返会棋局情况的函数
+//用于返回棋局情况的函数
 int judge_win_a_side(TICK_TACK_TOE tick_tack_toe_phase[][3], int k, TICK_TACK_TOE a, TICK_TACK_TOE b)
 {
     int judge_win_a_side = 0;
